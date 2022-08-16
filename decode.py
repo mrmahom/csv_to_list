@@ -12,6 +12,6 @@ def get_file_name():
 def get_string_for_file(choice, df):
     lst = df[choice].values.tolist()
     string = ''
-    for item in lst:
-        string += f', {item}'
+    for i, item in enumerate(lst):
+        string += f", {item}" if i else f"{item}"
     return string
