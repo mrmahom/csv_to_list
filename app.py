@@ -25,7 +25,9 @@ if uploaded_file is not None:
         st.warning("Nem válaszottál oszlopot")
     else:
         st.success("Szuper! Letöltheted a listát ;D")
-        st.download_button('Letöltés', dc.text_file_generator(choice, df))
+        output_file = dc.text_file_generator(choice, df)
+        with open(output_file) as o:
+            st.download_button('Letöltés', o)
 
 st.markdown("---")
 st.write("@author: E. Martin Maho")
