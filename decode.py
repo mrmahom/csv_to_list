@@ -1,5 +1,5 @@
 def get_choices_list(df):
-    return df.columns()
+    return df.columns().tolist()
 
 
 def text_file_generator(choice, df):
