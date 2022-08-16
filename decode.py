@@ -2,12 +2,16 @@ def get_choices_list(df):
     return df.columns.values.tolist()
 
 
-def text_file_generator(choice, df):
+def get_file_name():
     from datetime import datetime
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%d_%H-%M-%S")  # YYYY-mm-dd_HH-MM-SS
+    return f"ID_list_{dt_string}"
+
+
+def get_string_for_file(choice, df):
     lst = df[choice].values.tolist()
-    with open(f"ID_list_{dt_string}", 'w', encoding='utf-8') as output:
-        for item in lst:
-            print(item, sep=',', file=output)
-    return output
+    string = ''
+    for item in lst:
+        string += f', {item}'
+    return string
