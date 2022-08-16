@@ -1,6 +1,6 @@
 def file_parser(uploaded_file):
     if uploaded_file is not None:
-        with open(uploaded_file, 'r', encoding='utf-8') as file:
+        with open(uploaded_file.name, 'r', encoding='utf-8') as file:
             lst = []
             for i, lines in enumerate(file):
                 line = lines.split(',')
