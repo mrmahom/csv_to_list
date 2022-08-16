@@ -1,21 +1,13 @@
-def file_parser(uploaded_file):
-    if uploaded_file is not None:
-        with open(uploaded_file.name, 'r', encoding='utf-8') as file:
-            lst = []
-            for i, lines in enumerate(file):
-                line = lines.split(',')
-                for item in line:
-                    lst[i].append(item)
-    return lst
+def get_choices_list(df):
+    return df.columns()
 
 
-def get_choices_list(lst):
-    return lst[0]
-
-
-def list_creator(choice, lst):
-    choices_list = get_choices_list(lst)
-    result = []
-    for sub_lst in lst:
-        result.append(sub_lst[choices_list.index(choice)])
-    return result
+def text_file_generator(choice, df):
+    from datetime import datetime
+    now = datetime.now()
+    dt_string = now.strftime("%Y-%m-%d_%H-%M-%S")  # YYYY-mm-dd_HH-MM-SS
+    lst = df[choice].values.tolist()
+    with open(f"ID_list_{dt_string}", 'w', encoding='utf-8') as output:
+        for item in lst:
+            print(item, sep=',', file=output)
+    return output
