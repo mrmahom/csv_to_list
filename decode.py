@@ -15,3 +15,7 @@ def get_string_for_file(choice, df):
     for i, item in enumerate(lst):
         string += f", {item}" if i else f"{item}"
     return string
+
+
+def get_choices_list_length(df):
+    return len(df.columns.values.tolist())
