@@ -4,15 +4,23 @@ import pandas as pd
 
 # --------------------------------------
 
-st.set_page_config(page_title="ID lista vesszővel")
+st.set_page_config(page_title="ID lista")
 
-st.title("ID lista vesszővel")
+st.title("ID lista - vesszővel elválasztva")
 
 uploaded_file = st.file_uploader("Töltsd fel a csv fájlt!")
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
-    st.write(df)
+    df.index += 1
+
+    head_num = st.selectbox(
+        "Hány elemet szeretnél látni?",
+        ([10, "mindet!"])
+    )
+    head_num = 10 if head_num != "mindet!" else 1000000
+
+    st.table(df.head(head_num))
 
     choice = st.selectbox(
         "Válaszd ki az ID-kat tartalmazó oszlopot!",
