@@ -17,5 +17,5 @@ def get_string_for_file(choice, df):
     return string
 
 
-def get_choices_list_length(df):
-    return len(df.columns.values.tolist())
+def number_of_items(choice, df):
+    return len(df[choice].values.tolist())

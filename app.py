@@ -24,7 +24,7 @@ if uploaded_file is not None:
     if choice == "Válassz!":
         st.warning("Nem válaszottál oszlopot")
     else:
-        choices_list_length = dc.get_choices_list_length(df)
+        choices_list_length = dc.number_of_items(choice, df)
         st.success(f"Szuper! Letöltheted {choices_list_length} elemet tartalmazó listát ;D")
         output_field = dc.get_string_for_file(choice, df)
         st.download_button('Letöltés', output_field)
