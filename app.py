@@ -36,7 +36,7 @@ if uploaded_file is not None:
         choices_list_length = dc.number_of_items(choice, df)
         company_id_list = dc.get_id_list(choice, df)
         values_for_query = []
-        for id in company_id_list
+        for id in company_id_list:
             values_for_query.append(f"({id})")
         st.info(f"select * from (values {",".join(values_for_query)}) as t(company_id)"")
 
