@@ -9,7 +9,7 @@ def get_file_name():
     return f"ID_list_{dt_string}"
 
 
-def get_string_for_file(choice, df):
+def get_id_list(choice, df):
     lst = df[choice].values.tolist()
     string = ''
     for i, item in enumerate(lst):

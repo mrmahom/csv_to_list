@@ -22,9 +22,10 @@ if uploaded_file is not None:
 
     st.table(df.head(head_num))
 
+    choices_list = dc.get_choices_list(df)
     choice = st.selectbox(
         "Válaszd ki az ID-kat tartalmazó oszlopot!",
-        (["Válassz!"] + dc.get_choices_list(df))
+        (["Válassz!"] + choices_list)
     )
 
     st.markdown("---")
@@ -33,9 +34,11 @@ if uploaded_file is not None:
         st.warning("Nem válaszottál oszlopot")
     else:
         choices_list_length = dc.number_of_items(choice, df)
-        st.success(f"Szuper! Letöltheted {choices_list_length} elemet tartalmazó listát ;D")
-        output_field = dc.get_string_for_file(choice, df)
-        st.download_button('Letöltés', output_field)
+        company_id_list = dc.get_id_list(choice, df)
+        values_for_query = []
+        for id in company_id_list
+            values_for_query.append(f"({id})")
+        st.info(f"select * from (values {",".join(values_for_query)}) as t(company_id)"")
 
 st.markdown("---")
-st.write("@author: E. Martin Maho")
+st.write("@author: _E. *Martin* Maho_")
