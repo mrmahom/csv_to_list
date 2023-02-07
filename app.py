@@ -38,7 +38,7 @@ if uploaded_file is not None:
         values_for_query = []
         for id in company_id_list:
             values_for_query.append(f"({id})")
-        st.info(f"select * from (values {",".join(values_for_query)}) as t(company_id)"")
+        st.info(f"select * from (values {','.join(values_for_query)}) as t(company_id)"")
 
 st.markdown("---")
 st.write("@author: _E. *Martin* Maho_")
